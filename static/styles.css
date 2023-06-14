@@ -1,0 +1,96 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos para el encabezado de la página */
+header {
+  background-color: #4CAF50; /* Fondo verde */
+  color: #fff; /* Texto blanco */
+  padding: 20px; /* Relleno */
+  text-align: center; /* Centro el texto */
+}
+
+/* Estilos para el título de la página */
+h1 {
+  margin: 0; /* Elimino el margen superior e inferior */
+}
+
+/* Estilos para el contenido principal de la página */
+main {
+  background-color: #fff; /* Fondo blanco */
+  padding: 20px; /* Relleno */
+  text-align: center; /* Centro el contenido */
+}
+
+/* Estilos para el formulario de inicio de sesión */
+form {
+  display: inline-block; /* Hace que el formulario se muestre en línea con otros elementos */
+  text-align: left; /* Alinea el contenido a la izquierda */
+  width: 300px; /* Establece un ancho fijo para el formulario */
+}
+
+/* Estilos para las etiquetas de los campos de entrada de texto */
+label {
+  display: block; /* Hace que las etiquetas se muestren en una línea separada */
+  margin-top: 10px; /* Añade un margen superior */
+}
+
+/* Estilos para los campos de entrada de texto */
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* Hace que el ancho del campo de entrada sea del 100% */
+  padding: 10px; /* Añade un relleno */
+  border-radius: 5px; /* Hace que los bordes del campo de entrada sean redondeados */
+  border: 1px solid #ccc; /* Añade un borde */
+}
+
+/* Estilos para el botón de inicio de sesión */
+button {
+  display: block; /* Hace que el botón se muestre en una línea separada */
+  margin-top: 20px; /* Añade un margen superior */
+  padding: 10px 20px; /* Añade un relleno */
+  background-color: #4CAF50; /* Fondo verde */
+  color: #fff; /* Texto blanco */
+  border: none; /* Elimina el borde */
+  border-radius: 5px; /* Hace que los bordes del botón sean redondeados */
+  cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+}
+
+/* Estilos para el botón de inicio de sesión cuando se pasa el cursor sobre él */
+button:hover {
+  background-color: #3e8e41; /* Cambia el fondo a un tono más oscuro de verde */
+}
+
+/* Estilos para el enlace de registro */
+.register-link {
+  margin-top: 20px; /* Añade un margen superior */
+  font-size: 0.8em; /* Reduce el tamaño del texto */
+  color: #333; /* Texto gris */
+}
+
+/* Estilos para el enlace de registro cuando se pasa el cursor sobre él */
+.register-link a {
+  color: #4CAF50; /* Texto verde */
+  text-decoration: none; /* Elimina el subrayado */
+}
+
+/* Estilos para el enlace de registro cuando se pasa el cursor sobre él */
+.register-link a:hover {
+  text-decoration: underline; /* Añade un subrayado cuando se pasa el cursor sobre el enlace */
+}
+
+.button-init{
+  display:flex;
+  justify-content: center;
+}
+
+.center-form{
+  display: flex;
+  min-height: 30 rem;
+  /* height: 60%; */
+  justify-items: center;
+  justify-content: center;
+}

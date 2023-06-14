@@ -1,0 +1,34 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Autorizacion de compras</title>
+  <link rel="stylesheet" href="{%static 'styles.css'%}">
+</head>
+<body>
+  <header>
+    <h1>Autorizacion de compras</h1>
+  </header>
+  <main class="center-form">
+    <div>
+      <form id="login-form" method="post" >
+        {% csrf_token %}
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+
+        <div class="button-init">
+          <button type="submit" value="Ingresar">Iniciar sesión</button>
+        </div>
+      </form>
+      <div class="register-link">
+        ¿No está registrado? <a href="#">Regístrese aquí</a>.
+      </div>
+    </div>
+  </main>
+  <script src={%static app.js%}></script>
+</body>
+</html>
