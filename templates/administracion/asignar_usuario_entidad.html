@@ -1,0 +1,83 @@
+{% extends "base/lista_base.html" %}
+
+{% block subheader %}
+{% endblock %}
+
+{% block title_table %}  
+Asignar usuarios a entidad 
+{% endblock %}
+
+{% block form %}
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                
+                <!--begin::Form-->
+                <form class="form" method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <!-- Usuarios  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select class="custom-select form-control" name="username">
+                                    <option value selected>Selecciona el usuario</option>
+                                    {% if form.usuarios %}
+                                    {% for value,label in form.usuarios.field.choices %}
+                                        <option value ="{{label}}">{{label}}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                        </div>
+                    <button type="submit" name ="anadir_usuario"  class="btn btn-primary mr-2" style="margin-left:10px">Añadir</button>
+                
+                        <div class="card-body">
+                            <!--begin: Datatable-->
+                            <table class="table table-bordered table-checkable" >
+                                <thead>
+                                    <tr>
+                                        <th>Nombre de usuario</th>
+                                        <th>Rol</th>
+                                    </tr>
+                                </thead>
+                                <body id="tabla_usuarios_entidad">
+                                    {% if lista_usuarios %}
+                                        {% for usuario in lista_usuarios %}
+                                            <tr>
+                                                <td>{{usuario.username}}</td>
+                                                <td>{{usuario.rol}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                </body>
+                            </table>
+                            <!--end: Datatable-->
+                        </div>
+                        <!-- End Usuarios  -->
+
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'administracion:lista_entidades' %}" class="btn btn-primary mr-2">Continuar</a>
+                    </div>
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <strong>{{ field.label }}:</strong> {{ error }}
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+                <!--end::Form-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

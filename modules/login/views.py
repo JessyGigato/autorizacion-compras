@@ -11,6 +11,9 @@ def index(request):
     s = request.GET['username'] + '  ' + request.GET['password'] 
     return HttpResponse(s)
 
+def index_(request):
+    return TemplateResponse(request,'index.html')
+
 @csrf_protect
 def my_login(request):
     if request.method == "POST":
@@ -19,7 +22,7 @@ def my_login(request):
         user = authenticate(request,username=username,password=password)
         if user is not None:
             login(request, user)
-            return HttpResponse('ya se ha logueado')
+            return TemplateResponse(request, 'index.html')
         else:
             return HttpResponse('Usuario Invalido')
     else:

@@ -1,0 +1,34 @@
+{% extends "base/lista_base.html" %}
+{% load static %}
+
+
+{% block title_page %}Documentos al Prestamista {% endblock %}
+{% block add_button %}  
+
+<div>
+<a class="btn btn-primary" href="{% url 'nomencladores:crea_documento_prestamista' %}"> Crear Documento al Prestamista</a>
+</div>
+{% endblock %}
+
+{% block title_table %} Crear Documento al Prestamista {% endblock %}
+{% block subtitle_table %}Lista de Documentos al Prestamista en el sistema {% endblock %}
+
+{% block head_table %}
+<tr>
+    <th>Código</th>
+    <th>Nombre</th>
+</tr>
+{% endblock %}
+
+{% block content_table %}
+
+{% if object_list %}
+{% for cond in object_list %}
+<tr>
+    <td>{{ cond.codigo }}</td>
+    <td>{{ cond.nombre }}</td>
+</tr>
+{% endfor %}
+{% endif %} 
+
+{% endblock %}

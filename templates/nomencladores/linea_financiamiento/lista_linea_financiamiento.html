@@ -1,0 +1,34 @@
+{% extends "base/lista_base.html" %}
+{% load static %}
+
+
+{% block title_page %}Comentaristas {% endblock %}
+{% block add_button %}  
+
+<div>
+<a class="btn btn-primary" href="{% url 'nomencladores:crea_linea_financiamiento' %}"> Crear Línea de financimiento</a>
+</div>
+{% endblock %}
+
+{% block title_table %} Crear Línea de financimiento {% endblock %}
+{% block subtitle_table %}Lista de Líneas de financimiento del sistema {% endblock %}
+
+{% block head_table %}
+<tr>
+    <th>Código</th>
+    <th>Descripción</th>
+</tr>
+{% endblock %}
+
+{% block content_table %}
+
+{% if object_list %}
+{% for linea in object_list %}
+<tr>
+    <td>{{ linea.codigo }}</td>
+    <td>{{ linea.descripcion }}</td>
+</tr>
+{% endfor %}
+{% endif %} 
+
+{% endblock %}

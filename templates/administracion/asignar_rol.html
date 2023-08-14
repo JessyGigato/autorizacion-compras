@@ -1,0 +1,82 @@
+{% extends "base/base.html" %}
+
+{% block wrapper %}
+
+<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+    <!--begin::Container-->
+    <div class="container">
+                <div class="card card-custom">
+                <div class="card-header">
+                    <h1 class="card-title">
+                    Asignar Rol
+                    </h1>
+                </div>
+                <!--begin::Form-->
+                <form class="form" method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <!-- Usuario  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select class="custom-select form-control" name="username">
+                                    <option value selected>Selecciona el usuario</option>
+                                    {% if form.username %}
+                                    {% for value,label in form.username.field.choices %}
+                                        <option value ="{{value}}">{{label}}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- End Usuario  -->
+
+                        <!-- Radios -->
+                        <div class="form-group ">
+                            <label class="col-3 col-form-label">Seleccione el {{form.rol.label}}</label>
+                            <div class="col-9 col-form-label">
+                                <div class="radio-list">
+                                    {% for value,label in form.rol.field.choices %}
+                                    <label class="radio">
+                                        <input type="radio"  name="rol" value ="{{value}}"/>
+                                        <span></span>
+                                        {{label}}
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Radios -->
+
+                        <!-- Firma -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text" style="display: none;" id="span_firma">{{form.firma.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Firma" name="firma" id="firma" style="display: none;"/>
+
+                            </div>
+                        </div>
+                        <!-- End Firma -->
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <strong>{{ field.label }}:</strong> {{ error }}
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+                <!--end::Form-->
+                </div>
+            
+        
+    </div>
+</div> 
+{% endblock %}

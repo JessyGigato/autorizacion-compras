@@ -1,0 +1,94 @@
+{% extends "base/base.html" %}
+
+{% block wrapper %}
+<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+    <!--begin::Container-->
+    <div class="container">
+        
+            
+            <div class=" card card-custom ">
+                <div class="card-header">
+                    <h1 class="card-title">
+                    Crear Usuario
+                    </h1>
+                </div>
+                <!--begin::Form-->
+                <form class="form" method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <!-- Usuario  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.username.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Usuario" name="username"/>
+                            </div>
+                        </div>
+                        <!-- End Usuario  -->
+
+                        <!-- Nombre  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.first_name.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Nombre" name="first_name"/>
+                            </div>
+                        </div>
+                        <!-- End Nombre  -->
+
+                        <!-- Apellidos  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.last_name.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Apellidos" name="last_name"/>
+                            </div>
+                        </div>
+                        <!-- End Apellidos  -->
+
+                        <!-- Email  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.email.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Email" name="email"/>
+                            </div>
+                        </div>
+                        <!-- End Email  -->
+
+                        <!-- Password  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.password1.label}}</span></div>
+                                <input type="password" class="form-control" placeholder="Contraseña" name="password1"/>
+                            </div>
+                        </div>
+                        <!-- End Password  -->
+
+                        <!-- Confirm Password  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.password2.label}}</span></div>
+                                <input type="password" class="form-control" placeholder="Contraseña" name="password2"/>
+                            </div>
+                        </div>
+                        <!-- End Confirm Password  -->
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <strong>{{ field.label }}:</strong> {{ error }}
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+                <!--end::Form-->
+            </div>
+            
+        
+    </div>   
+</div>
+{% endblock %}

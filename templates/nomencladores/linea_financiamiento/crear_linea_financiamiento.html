@@ -1,0 +1,157 @@
+{% extends "base/base.html" %}
+
+{% block wrapper %}
+<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+    <!--begin::Container-->
+    <div class="container">
+        
+            
+            <div class=" card card-custom ">
+                <div class="card-header">
+                    <h1 class="card-title">
+                    Crear Línea de Financimiento
+                    </h1>
+                </div>
+                <!--begin::Form-->
+                <form class="form" method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <!-- Codigo  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.codigo.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Código" name="codigo"/>
+                            </div>
+                        </div>
+                        <!-- End Codigo  -->
+
+                        <!-- Descripción  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.descripcion.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Descripción" name="descripcion"/>
+                                
+                                <label class="checkbox" style="margin-left: 75px;">
+                                    <input type="checkbox" checked="checked" name="activa"/>
+                                    <span></span>
+                                    {{form.activa.label}}
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End Descripción  -->
+
+                        <!-- Moneda  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select class="custom-select form-control" name="moneda">
+                                    <option value selected>Selecciona la moneda</option>
+                                    {% if form.moneda %}
+                                    {% for value,label in form.moneda.field.choices %}
+                                        <option value ="{{value}}">{{label}}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+
+                                <!-- Fecha -->
+                                <label class="col-form-label text-right " style="margin-left: 75px;">Expira</label>
+                                <div class="col-lg-4 col-md-9 col-sm-12">
+                                    <input type="text" class="form-control" readonly placeholder="Seleccione la fecha"/>
+                                </div>
+                                <!-- End Fecha -->
+
+                            </div>
+                        </div>
+                        <!-- End Moneda  -->
+
+                        <!-- Instrumento de pago -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select class="custom-select form-control" name="moneda">
+                                    <option value selected>Selecciona el instrumento de pago</option>
+                                    {% if form.instrumento_pago %}
+                                    {% for value,label in form.instrumento_pago.field.choices %}
+                                        <option value ="{{value}}">{{label}}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                        </div>
+                        <!-- End Instrumento de pago -->
+
+                        <!--Titulo monto financimiento  -->
+                        <h5> Otros datos</h5>
+                        <hr>
+                        <!-- Monto Financiamiento  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.monto_financiamiento.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Monto Financiamiento" name="monto_financiamiento"/>
+                            </div>
+                        </div>
+                        <!-- End Monto Financiamiento  -->
+
+                        <!-- Dias revolvencia  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.dias_revolvencia.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Días de revolvencia" name="dias_revolvencia"/>
+                            </div>
+                        </div>
+                        <!-- End Dias revolvencia  -->
+
+                        <!-- Monto Total Financiamiento  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.monto_total.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Monto Total" name="monto_total"/>
+                            </div>
+                        </div>
+                        <!-- End MontoTotal Financiamiento  -->
+                        
+                        <!-- Detalles  -->
+                        <h5> Detalles</h5>
+                        <hr>
+                        <div class="form-group">
+                            <div class="input-group">
+                                 <!-- Dias  -->
+                                <div class="input-group-prepend"><span class="input-group-text">{{form.dias.label}}</span></div>
+                                    <input type="text" class="form-control" placeholder="Días" name="dias"/>
+                                
+                                    <!-- Interés  -->
+                                <div class="input-group-prepend" style="margin-left:20px"><span class="input-group-text">{{form.interes.label}}</span></div>
+                                    <input type="text" class="form-control" placeholder="Interés " name="interes"/>
+                                
+                                    <!-- Revisa  -->
+                                <label class="checkbox" style="margin-left: 50px;">
+                                    <input type="checkbox" checked="checked" name="revisa"/>
+                                    <span></span>
+                                    {{form.revisa.label}}
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End Detalles  -->
+                       
+
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <strong>{{ field.label }}:</strong> {{ error }}
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+                <!--end::Form-->
+            </div>
+            
+        
+    </div>   
+</div>
+{% endblock %}

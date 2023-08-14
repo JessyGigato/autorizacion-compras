@@ -1,0 +1,36 @@
+{% extends "base/lista_base.html" %}
+{% load static %}
+
+
+{% block title_page %}Entidades {% endblock %}
+
+{% block title_table %} Entidades {% endblock %}
+{% block subtitle_table %}Lista de Entidades del sistema {% endblock %}
+
+{% block head_table %}
+<tr>
+    <th>Nombre de Entidad</th>
+    <th>Codigo</th>
+</tr>
+{% endblock %}
+
+{% block content_table %}
+
+{% if object_list %}
+{% for entidad in object_list %}
+    <tr>
+        <td>{{ entidad.nombre }}</td>
+        <td>{{ entidad.codigo }}</td>
+    </tr>
+    {% for key,usuarios in entidad_usuario.items %}
+        {% if key == entidad.id%}
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{usuario.username}}</td></tr>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+{% endif %} 
+
+{% endblock %}

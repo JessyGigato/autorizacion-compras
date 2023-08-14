@@ -1,0 +1,117 @@
+{% extends "base/base.html" %}
+
+{% block wrapper %}
+
+<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+    <!--begin::Container-->
+    <div class="container">
+                <div class="card card-custom">
+                <div class="card-header">
+                    <h1 class="card-title">
+                    Configuración de parámetros
+                    </h1>
+                </div>
+                <!--begin::Form-->
+                <form class="form " method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <h6>Límites</h6>
+                        <hr>
+                        <!-- Limite para crear SAO(USD) -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.limite_crear_sao.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="{{form.limite_crear_sao.label}}" name="limite_crear_sao" value ={{config.limite_crear_sao}} />
+                            </div>
+                        </div>
+                        <!-- End Limite para crear SAO(USD) -->
+
+                        <!-- Limite Aprobacion División -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.limite_aprobacion_division.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="{{form.limite_aprobacion_division.label}}" name="limite_aprobacion_division" value ={{config.limite_aprobacion_division}} />
+                            </div>
+                        </div>
+                        <!-- End Limite Aprobacion División -->
+
+                        <!-- Número de Aprobación SAO(<10000) -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.num_aprob_sao.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="{{form.num_aprob_sao.label}}" name="num_aprob_sao" value ={{config.num_aprob_sao}} />
+                            </div>
+                        </div>
+                        <!-- Número de Aprobación SAO(<10000) -->
+
+                        <h6>Enlaces a otros sistemas</h6>
+                        <hr>
+                        <!-- Nomenclador general -->
+                            <div class="form-group">
+                                <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text">{{form.nomenclador_general.label}}</span></div>
+                                    <input type="text" class="form-control" placeholder="{{form.nomenclador_general.label}}" name="nomenclador_general" value ={{config.nomenclador_general}} />
+                                </div>
+                            </div>
+                        <!-- Nomenclador general -->
+
+                        <!-- Provedores -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.proveedores.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="{{form.proveedores.label}}" name="proveedores" value ={{config.proveedores}} />
+                            </div>
+                        </div>
+                    <!-- Provedores -->
+                    
+                    <!-- Inversiones -->
+                    <div class="form-group">
+                        <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text">{{form.inversiones.label}}</span></div>
+                            <input type="text" class="form-control" placeholder="{{form.inversiones.label}}" name="inversiones" value ={{config.inversiones}} />
+                        </div>
+                    </div>
+                    <!-- Inversiones -->
+
+                    <!-- SAO -->
+                    <div class="form-group">
+                        <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text">{{form.sao.label}}</span></div>
+                            <input type="text" class="form-control" placeholder="{{form.sao.label}}" name="sao" value ={{config.sao}} />
+                        </div>
+                    </div>
+                    <!-- SAO -->
+
+                    <!-- Entidades -->
+                    <div class="form-group">
+                        <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text">{{form.entidades.label}}</span></div>
+                            <input type="text" class="form-control" placeholder="{{form.entidades.label}}" name="entidades" value ={{config.entidades}} />
+                        </div>
+                    </div>
+                    <!-- Entidades -->
+
+
+                        
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <strong>{{ field.label }}:</strong> {{ error }}
+                            {% endfor %}
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+                <!--end::Form-->
+                </div>
+            
+        
+    </div>
+</div>
+{% endblock %}

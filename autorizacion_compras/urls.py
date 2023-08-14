@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from modules.login import urls as login_url
+from modules.usuario import urls as usuarios_url
+from modules.administracion import urls as administracion_urls
+from modules.nomencladores import urls as nomencladores_urls
 from modules.login.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(login_url),name='login'),
+    path('usuario/',include((usuarios_url,'usuario'),namespace='usuario'),name='usuario'),
+    path('administracion/',include((administracion_urls,'administracion'),namespace='administracion'),name='administracion'),
+    path('nomencladores/',include((nomencladores_urls,'nomencladores'),namespace='nomencladores'),name='nomencladores'),
 ]

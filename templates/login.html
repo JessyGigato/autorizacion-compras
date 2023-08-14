@@ -1,34 +1,65 @@
-{%load static%}
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Autorizacion de compras</title>
-  <link rel="stylesheet" href="{%static 'styles.css'%}">
-</head>
-<body>
-  <header>
-    <h1>Autorizacion de compras</h1>
-  </header>
-  <main class="center-form">
-    <div>
-      <form id="login-form" method="post" >
-        {% csrf_token %}
-        <label for="username">Nombre de usuario:</label>
-        <input type="text" id="username" name="username" required>
+{% extends "base/base.html"%}
+{% load static %}
 
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
+{% block index %}
+{% endblock %}
 
-        <div class="button-init">
-          <button type="submit" value="Ingresar">Iniciar sesión</button>
-        </div>
-      </form>
-      <div class="register-link">
-        ¿No está registrado? <a href="#">Regístrese aquí</a>.
-      </div>
-    </div>
-  </main>
-  <script src={%static app.js%}></script>
-</body>
+{% block add_link_head %}
+<!--begin::Page Custom Styles(used by this page)-->
+<link href="{% static 'assets/css/pages/login/classic/login-5.css' %}" rel="stylesheet" type="text/css" />
+<!--end::Page Custom Styles-->
+{% endblock %}
+
+
+	<!--begin::Body-->
+	{% block body %}
+		<!--begin::Main-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Login-->
+			<div class="login login-5 login-signin-on d-flex flex-row-fluid" id="kt_login">
+				<div>
+					<img src="{% static 'assets/media/logos/marca-login-transparent.png' %}" class="img-trans-login" alt="" />
+				</div>
+				<div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" >
+					
+					<div class="login-form text-center text-gray p-7 position-relative overflow-hidden">
+						<!--begin::Login Header-->
+						<div class="d-flex flex-center mb-15">
+							<a href="#">
+								<img src="{% static 'assets/media/logos/marca-login.png' %}" class="max-h-100px" alt="" />
+								<hr style="border-color:#4ec600">
+							</a>
+						</div>
+						
+						<!--end::Login Header-->
+						<!--begin::Login Sign in form-->
+						<div class="login-signin">
+							
+							<!-- id="kt_login_signin_form" -->
+							<form class="form"  action="{{app_path}}" method="post" id="login-form">
+								{% csrf_token %}
+								<div class="form-group">
+									<input class="form-control h-auto text-gray bg-white-o-5 rounded-pill border-0 py-4 px-8" type="text" placeholder="Usuario" name="username" autocomplete="off" />
+								</div>
+								<div class="form-group">
+									<input class="form-control h-auto text-gray bg-white-o-5 rounded-pill border-0 py-4 px-8" type="password" placeholder="Contraseña" name="password" />
+								</div>
+								
+								<div class="">
+									<button  class="btn btn-pill btn-primary opacity-90 px-15 py-3 form-group text-center mt-10 " type="submit">Login</button>
+								</div>
+								
+							</form>
+						</div>
+						<!--end::Login Sign in form-->
+						
+					</div>
+				</div>
+			</div>
+			<!--end::Login-->
+		</div>
+		<!--end::Main-->
+		
+    {% endblock %}
+	<!--end::Body-->
 </html>

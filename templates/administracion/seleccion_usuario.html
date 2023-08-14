@@ -1,0 +1,53 @@
+{% extends "base/base.html" %}
+
+{% block wrapper %}
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-custom">
+                <div class="card-header">
+                    <h1 class="card-title">
+                    Asignar Rol
+                    </h1>
+                </div>
+                <!--begin::Form-->
+                <form class="form" method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <!-- Usuario  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select class="custom-select form-control" name="username">
+                                    <option value selected>Selecciona el usuario</option>
+                                    {% if form.username %}
+                                    {% for value,label in form.username.field.choices %}
+                                        <option value ="{{value}}">{{label}}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Volver</button>
+                        </div>
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <strong>{{ field.label }}:</strong> {{ error }}
+                                {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        
+                </form>
+                <!--end::Form-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

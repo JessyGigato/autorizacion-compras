@@ -1,0 +1,36 @@
+{% extends "base/lista_base.html" %}
+{% load static %}
+
+
+{% block title_page %}Comentaristas {% endblock %}
+{% block add_button %}  
+
+<div>
+<a class="btn btn-primary"> Crear comentarista</a>
+</div>
+{% endblock %}
+
+{% block title_table %} Crear Comentarista {% endblock %}
+{% block subtitle_table %}Lista de comentaristas del sistema {% endblock %}
+
+{% block head_table %}
+<tr>
+    <th>Nombre de comentarista</th>
+    <th>Certificado</th>
+    <th>Fecha de creación</th>
+</tr>
+{% endblock %}
+
+{% block content_table %}
+
+{% if object_list %}
+{% for comentarista in object_list %}
+<tr>
+    <td>{{ comentarista.nombre }}</td>
+    <td>{{ comentarista.certificado }}</td>
+    <td>{{ comentarista.fecha_creacion }}</td>
+</tr>
+{% endfor %}
+{% endif %} 
+
+{% endblock %}

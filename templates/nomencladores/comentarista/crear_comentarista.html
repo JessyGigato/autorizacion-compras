@@ -1,0 +1,65 @@
+{% extends "base/base.html" %}
+
+{% block wrapper %}
+<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+    <!--begin::Container-->
+    <div class="container">
+        
+            
+            <div class=" card card-custom ">
+                <div class="card-header">
+                    <h1 class="card-title">
+                    Crear Comentarista
+                    </h1>
+                </div>
+                <!--begin::Form-->
+                <form class="form" method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <!-- Usuario  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <select class="custom-select form-control" name="nombre">
+                                    <option value selected>Selecciona el usuario</option>
+                                    {% if form.nombre %}
+                                    {% for value,label in form.nombre.field.choices %}
+                                        <option value ="{{value}}">{{label}}</option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- End Usuario  -->
+
+                        <!-- Certificado  -->
+                        <div class="form-group">
+                            <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">{{form.certificado.label}}</span></div>
+                                <input type="text" class="form-control" placeholder="Certificado" name="certificado"/>
+                            </div>
+                        </div>
+                        <!-- End Certificado  -->
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                    </div>
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <strong>{{ field.label }}:</strong> {{ error }}
+                            {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+                <!--end::Form-->
+            </div>
+            
+        
+    </div>   
+</div>
+{% endblock %}

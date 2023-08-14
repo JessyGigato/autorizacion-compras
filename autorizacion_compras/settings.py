@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'modules.nueva_solicitud',
+    'modules.usuario',
     'modules.login',
-    'modules.usuario'
+    'modules.solicitud',
+    'modules.administracion',
+    'modules.nomencladores',
 ]
 
 MIDDLEWARE = [
@@ -97,7 +99,7 @@ DATABASES = {
 
 AUTHENTICATION_BACKENDS = (
 
-    'autorizacion_compras.core.backends.ldap_login_backend.LDAPBackend',
+    'core.backends.ldap_login_backend.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend',
 
 )

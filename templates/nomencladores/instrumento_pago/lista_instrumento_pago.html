@@ -1,0 +1,34 @@
+{% extends "base/lista_base.html" %}
+{% load static %}
+
+
+{% block title_page %}Instrumento de Pago {% endblock %}
+{% block add_button %}  
+
+<div>
+<a class="btn btn-primary" href="{% url 'nomencladores:crea_instrumento_pago'%}"> Crear Instrumento de Pago</a>
+</div>
+{% endblock %}
+
+{% block title_table %} Crear Instrumento de Pago {% endblock %}
+{% block subtitle_table %}Lista de Líneas de Instrumentos de Pago del sistema {% endblock %}
+
+{% block head_table %}
+<tr>
+    <th>Código</th>
+    <th>Nombre</th>
+</tr>
+{% endblock %}
+
+{% block content_table %}
+
+{% if object_list %}
+{% for inst in object_list %}
+<tr>
+    <td>{{ inst.codigo }}</td>
+    <td>{{ inst.nombre }}</td>
+</tr>
+{% endfor %}
+{% endif %} 
+
+{% endblock %}
